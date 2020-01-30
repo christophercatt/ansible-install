@@ -1,27 +1,45 @@
 #!/bin/bash
 
+
+## Customisable install location
 dir="/home/ansible-play"
 
+## Checks if install directory exists
 if [ ! -d "$dir" ]
 then
-	mkdir "$dir" && cd "$dir"
-	apt-get install -y python2.7 python-pip
-	pip install -U virtualenv
 
-	virtualenv .venv
-	source .venv/bin/activate
+	## Makes install directory and CD into it
+	mkdir "$dir" && cd "$dir"
+	## Install dependencies and create empty hosts file for later use
+	apt install -y python3.7 python3.7-dev python3.7-venv python3-venv
+	touch hosts
+	## Setup virtual environment
+	python3.7 -m venv venv
+	source venv/bin/activate
+	## Install Ansible packages
+	pip install --upgrade pip
 	pip install ansible
 
-	touch hosts
 else
+
+	## If install directory already exists, check status of hosts file
+	if [ ! -f "$dir/hosts" ]
+	then
+		## If no hosts file is found, make one
+		touch hosts
+	fi
+
+	## Checks if virtual environment environmental variable has been set
 	if [[ "$VIRTUAL_ENV" != "" ]]
 	then
-		pip install -U ansible
+		## Upgrade Ansible if ne updates available
+		pip install --upgrade ansible
 	else
-		virtualenv .venv
-		source .venv/bin/activate
+		## If venv environmental variable doesn't exist, setup venv
+		python3.7 -m venv venv
+		source venv/bin/activate
+		## Install Ansible packages
+		pip install --upgrade pip
 		pip install ansible
-
-		touch hosts
 	fi
 fi
