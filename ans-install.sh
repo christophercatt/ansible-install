@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 dir="/home/ansible-play"
 
