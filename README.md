@@ -4,10 +4,10 @@ Note: This is a work in progress and is currently undergoing testing and improve
 
 
 This is a lightweight install script to install Ansible within a virtual environment.
-to change install location, simply change the path within the $dir variable.
+To change install location, simply change the path within the $dir variable.
 
 ## To-Do
 - [ ] Fix bug where virtual environment isn't activated
 - [ ] Additional tests
 - [x] Update to use Python 3
-- [ ] Add module to add ansible-go command to .bashrc
+- [x] Add module to add ansible-go command to .bashrc
