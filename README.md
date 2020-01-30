@@ -9,3 +9,4 @@ to change install location, simply change the path within the $dir variable.
 ## To-Do
 - [ ] Fix bug where virtual environment isn't activated
 - [ ] Additional tests
+- [ ] Update to use Python 3
