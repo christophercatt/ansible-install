@@ -43,7 +43,7 @@ Use the following to exit the virtual environment:
 
 ## To-Do
 - [ ] Testing
-- [ ] Stop file creation from setting owner as 'root'
+- [x] Stop file creation from setting owner as 'root'
 - [x] Add Alias to user's .bashrc file
 - [x] Update to use Python 3
 - [x] Add module to add ansible-go command to .bashrc
