@@ -10,6 +10,8 @@
 ## Customisable install location
 dir="$HOME/ansible-play"
 
+## Username lookup
+usr=$(echo "$HOME" | cut -d "/" -f3)
 
 
 ## FUNCTIONS ##
@@ -48,8 +50,7 @@ if [ ! -d "$dir" ]
 then
 
 	## Makes install directory and CD into it
-	sudo -u "$USER" mkdir "$dir"
-	sudo chown -R "$USER":"$USER" "$dir"
+	mkdir "$dir"
 	cd "$dir"
 	## Install dependencies and create empty hosts file for later use
 	sudo apt install -y python3.7 python3.7-dev python3.7-venv python3-venv
@@ -68,14 +69,19 @@ else
 	fi
 
 	## Checks if virtual environment environmental variable has been set
-	if [[ "$VIRTUAL_ENV" != "" ]]
+	if [ ! -d "$dir/venv" ]
 	then
-		## Upgrade Ansible if new updates available
-		source venv/bin/activate
-		pip install --upgrade ansible
+                ## Setup virtual environment and install Ansible
+                setup_venv_ansible
 	else
-	        ## Setup virtual environment and install Ansible
-	        setup_venv_ansible
-
+                ## Upgrade Ansible if new updates available
+                source venv/bin/activate
+                pip install --upgrade ansible
 	fi
+fi
+
+## Always make sure directory belongs to current user instead of root (if using non root user
+if [[ ! -z "$usr" ]]
+then
+	sudo chown -R "$usr":"$usr" "$dir"
 fi
