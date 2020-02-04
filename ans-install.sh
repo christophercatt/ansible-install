@@ -48,8 +48,8 @@ if [ ! -d "$dir" ]
 then
 
 	## Makes install directory and CD into it
-	sudo mkdir "$dir"
-	sudo chown -R "$usr":"$usr" "$dir"
+	sudo -u "$USER" mkdir "$dir"
+	sudo chown -R "$USER":"$USER" "$dir"
 	cd "$dir"
 	## Install dependencies and create empty hosts file for later use
 	sudo apt install -y python3.7 python3.7-dev python3.7-venv python3-venv
