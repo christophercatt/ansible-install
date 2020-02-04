@@ -11,27 +11,29 @@ To change install location, simply change the path within the $dir variable.
 
 * Make sure git is installed:
 
-        sudo apt get git
+      sudo apt install git
 
 * Clone this Repo to desired download folder:
 
-        git clone https://github.com/christophercatt/ansible-install.git
+      git clone https://github.com/christophercatt/ansible-install.git
 
 * Change directory into Repo:
 
-        cd ansible-install/
+      cd ansible-install/
 
 * Run install script as 'sudo' user:
 
-        sudo ./ans-install.sh
+      sudo ./ans-install.sh
 
 * To default into the virtual environment and start using anisible, use:
 
-        ansible-go
+      ansible-go
+
+Note: to use 'ansible-go' command, please either log out or open a new terminal session for alias to take effect
 
 ## To-Do
 - [ ] Testing
-- [ ] Add Alias to user's .bashrc file
+- [x] Add Alias to user's .bashrc file
 - [x] Update to use Python 3
 - [x] Add module to add ansible-go command to .bashrc
 - [x] Fix bug where virtual environment isn't activated

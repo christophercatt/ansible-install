@@ -1,0 +1,13 @@
+# ansible-install
+
+Note: This is a work in progress and is currently undergoing testing and improvements. Use at own risk. Tested with 95% working on Ubuntu 18.04 (See To-Do 1 for details)
+
+
+This is a lightweight install script to install Ansible within a virtual environment.
+To change install location, simply change the path within the $dir variable.
+
+## To-Do
+- [ ] Fix 
+- [ ] Additional tests
+- [x] Update to use Python 3
+- [x] Add module to add ansible-go command to .bashrc
