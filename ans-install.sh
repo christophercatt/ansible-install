@@ -8,7 +8,7 @@
 ## VARIABLES ##
 
 ## Customisable install location
-dir="/home/ansible-play"
+dir="$HOME/ansible-play"
 
 
 
@@ -24,13 +24,14 @@ setup_venv_ansible () {
         pip install --upgrade pip
         pip install ansible
 
+	add_ansible_go
 }
 
 ## Function to add ansible-go command to global .bashrc
 add_ansible_go () {
 
 	## Add ansible-go alias into .bashrc file
-	echo "alias ansible-go='cd $dir && source venv/bin/activate'" >> ~/.bashrc
+	sudo echo "alias ansible-go='cd $dir && source venv/bin/activate'" >> ~/.bashrc
 	## Source .bashrc file to enable instant use of ansible-go command
 	source ~/.bashrc
 
@@ -40,14 +41,18 @@ add_ansible_go () {
 
 ## MAIN ##
 
+
+
 ## Checks if install directory exists
 if [ ! -d "$dir" ]
 then
 
 	## Makes install directory and CD into it
-	mkdir "$dir" && cd "$dir"
+	sudo mkdir "$dir"
+	sudo chown -R "$usr":"$usr" "$dir"
+	cd "$dir"
 	## Install dependencies and create empty hosts file for later use
-	apt install -y python3.7 python3.7-dev python3.7-venv python3-venv
+	sudo apt install -y python3.7 python3.7-dev python3.7-venv python3-venv
 	touch hosts
 	## Setup virtual environment and install Ansible
 	setup_venv_ansible
