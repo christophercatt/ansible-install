@@ -30,21 +30,16 @@ To change install location, simply change the path within the $dir variable.
 
       ansible-go
 
-
-
-
+<br/>
 Note: to use 'ansible-go' command, please either log out or open a new terminal session for alias to take effect or change directory to that specified in $dir within the script and run:
 
       source venv/bin/activate
 
+<br/>
 Use the following to exit the virtual environment:
 
       deactivate
-
-
-
-
-
+<br/>
 
 ## To-Do
 - [ ] Testing
