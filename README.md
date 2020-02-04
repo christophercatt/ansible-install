@@ -9,6 +9,7 @@ To change install location, simply change the path within the $dir variable.
 
 ## Usage
 
+
 * Make sure git is installed:
 
       sudo apt install git
@@ -29,7 +30,9 @@ To change install location, simply change the path within the $dir variable.
 
       ansible-go
 
+
 Note: to use 'ansible-go' command, please either log out or open a new terminal session for alias to take effect
+
 
 ## To-Do
 - [ ] Testing
